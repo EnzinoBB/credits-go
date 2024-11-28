@@ -2,10 +2,11 @@ package core
 
 import (
 	"context"
-	"credits-go/api"
-	"credits-go/general"
 	"crypto/tls"
 	"time"
+
+	"github.com/EnzinoBB/credits-go/api"
+	"github.com/EnzinoBB/credits-go/general"
 
 	"github.com/akamensky/base58"
 	"github.com/apache/thrift/lib/go/thrift"

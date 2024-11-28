@@ -1,4 +1,4 @@
-module credits-go
+module github.com/EnzinoBB/credits-go
 
 go 1.23.3
 

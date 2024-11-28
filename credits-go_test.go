@@ -1,45 +1,39 @@
-package main
+package test
 
 import (
-	"credits-go/api"
-	"credits-go/core"
-	"credits-go/general"
-	"credits-go/utils"
 	"fmt"
+	"testing"
+
+	"github.com/EnzinoBB/credits-go/core"
+	"github.com/EnzinoBB/credits-go/utils"
 )
 
-var _ = general.GoUnusedProtection__
-var _ = api.GoUnusedProtection__
-
-func main() {
+func TestGetWalletData(t *testing.T) {
 
 	//A Credits Node API End-Point
-	addr := "localhost:9090"
-
-	testGetWalletData(addr)
-
-}
-
-func testGetWalletData(node string) {
+	node := "localhost:9090"
 
 	//generate new Credits wallet using utility feature
 	publicKey, privateKey, err := utils.GenerateKeys()
 	if err != nil {
-		panic(err)
+		t.Error(err)
+		t.Fail()
 	}
 	fmt.Printf("Public Key: %s\n", publicKey)
 	fmt.Printf("Private Key: %s\n", privateKey)
 
 	nodeClient, err := core.NewNodeClient(node)
 	if err != nil {
-		panic(err)
+		t.Error(err)
+		t.Fail()
 	}
 
 	if nodeClient.CheckConnection() {
 
 		data, err := nodeClient.GetWalletData(publicKey)
 		if err != nil {
-			panic(err)
+			t.Error(err)
+			t.Fail()
 		}
 
 		fmt.Printf("Balance: %d,%d", data.Balance.Integral, data.Balance.Fraction)
@@ -47,11 +41,13 @@ func testGetWalletData(node string) {
 		nodeClient.CloseConnection()
 
 		if nodeClient.CheckConnection() {
-			panic(fmt.Errorf("connection is still open"))
+			t.Errorf("connection is still open")
+			t.Fail()
 		}
 
 	} else {
-		panic(fmt.Errorf("connection is not open"))
+		t.Errorf("connection is not open")
+		t.Fail()
 	}
 
 }

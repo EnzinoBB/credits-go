@@ -13,8 +13,8 @@ import (
 	"strconv"
 	"strings"
 	"github.com/apache/thrift/lib/go/thrift"
-	"credits-go/general"
-	"credits-go/api"
+	"github.com/EnzinoBB/credits-go/general"
+	"github.com/EnzinoBB/credits-go/api"
 )
 
 var _ = general.GoUnusedProtection__

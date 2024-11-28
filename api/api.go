@@ -10,7 +10,7 @@ import(
 	"fmt"
 	"time"
 	"github.com/apache/thrift/lib/go/thrift"
-	"credits-go/general"
+	"github.com/EnzinoBB/credits-go/general"
 
 )
 
