@@ -5,7 +5,6 @@ import (
 	"testing"
 
 	"github.com/EnzinoBB/credits-go/core"
-	"github.com/EnzinoBB/credits-go/model"
 	"github.com/EnzinoBB/credits-go/utils"
 )
 
@@ -37,9 +36,7 @@ func TestGetWalletData(t *testing.T) {
 			t.Fail()
 		}
 
-		data_out := model.GetWalletData_Out(data)
-
-		fmt.Printf("Wallet Data:\n %v", data_out)
+		fmt.Printf("Wallet Data:\n %v", data)
 
 		nodeClient.CloseConnection()
 

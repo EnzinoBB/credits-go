@@ -7,6 +7,7 @@ import (
 
 	"github.com/EnzinoBB/credits-go/api"
 	"github.com/EnzinoBB/credits-go/general"
+	"github.com/EnzinoBB/credits-go/model"
 
 	"github.com/akamensky/base58"
 	"github.com/apache/thrift/lib/go/thrift"
@@ -92,7 +93,7 @@ func (client *NodeClient) CheckConnection() bool {
 
 }
 
-func (client *NodeClient) GetWalletData(wallet string) (*api.WalletData, error) {
+func (client *NodeClient) GetWalletData(wallet string) (*model.WalletData, error) {
 
 	argvalue0, err := base58.Decode(wallet)
 	if err != nil {
@@ -105,5 +106,5 @@ func (client *NodeClient) GetWalletData(wallet string) (*api.WalletData, error) 
 		return nil, err
 	}
 
-	return result.WalletData, nil
+	return model.GetWalletData_Out(result.WalletData), nil
 }
